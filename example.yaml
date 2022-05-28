@@ -1,0 +1,25 @@
+---
+
+state:
+  bolt: ./nz.state # path to local state file
+
+notifications:
+  email:
+    smtp: smtp.gmail.com:587 # SMTP server address
+    login: nzbx@corp.com     # email sender login
+    password: secret         # email sender password
+    groups:                  # specify groups of alert receivers
+      - name: developers     # group name
+        addresses:           # list of alert receiver addresses in this group
+          - alex@corp.com
+
+commands:
+  - name: Test command     # short job description; all jobs MUST have unique description
+    exec: ./script.sh arg1 # command, application or script to execute
+    cron: "*/5 * * * *"    # schedule execution as cron table record
+    interval: 10s          # overrides cron; schedule execution by interval between consecutive executions
+    timeout: 2s            # time limit for successful execution
+    threshold: 3           # amount of consecutive failures before sending notifications
+    threshold_sleep: 5s    # interval between two failed executions before reaching threshold
+    notifications:         # specify 'type:group' tuple to send notifications
+      - email:developers
