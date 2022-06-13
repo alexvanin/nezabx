@@ -1,4 +1,3 @@
-- [ ] Check config relations between runner and notification groups on start
 - [ ] Add option to send "incident resolved" notifications
 - [ ] Add Matrix notificator
 - [ ] Add Telegram notificator
