@@ -44,7 +44,7 @@ func main() {
 	var mailNotificator *email.Notificator
 
 	if cfg.Notifications.Email != nil {
-		mailNotificator := email.NewNotificator(
+		mailNotificator = email.NewNotificator(
 			cfg.Notifications.Email.SMTP,
 			cfg.Notifications.Email.Login,
 			cfg.Notifications.Email.Password,
